@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --page: #fff7f3;
+  --surface: #ffffff;
+  --surface-image: #f7ece9;
+
+  --background: #fff7f3;
+  --foreground: #2d2430;
+
+  --card: #ffffff;
+  --card-foreground: #2d2430;
+
+  --popover: #ffffff;
+  --popover-foreground: #2d2430;
+
+  --primary: #e98668;
+  --primary-foreground: #271915;
+
+  --secondary: #f7ece9;
+  --secondary-foreground: #2d2430;
+
+  --muted: #f7ece9;
+  --muted-foreground: #6d606a;
+
+  --accent: #f8e3dc;
+  --accent-foreground: #2d2430;
+
+  --destructive: #d94b59;
+
+  --border: #eadbd8;
+  --input: #eadbd8;
+  --ring: #e98668;
+
+  --radius: 0.625rem;
+
+  --chart-1: #e98668;
+  --chart-2: #e66b82;
+  --chart-3: #cc5fa3;
+  --chart-4: #9262c1;
+  --chart-5: #006dc0;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #2d2430;
+  --sidebar-primary: #e98668;
+  --sidebar-primary-foreground: #271915;
+  --sidebar-accent: #f8e3dc;
+  --sidebar-accent-foreground: #2d2430;
+  --sidebar-border: #eadbd8;
+  --sidebar-ring: #e98668;
+}
+
+:root.dark {
+  --page: #000000;
+  --surface: #151515;
+  --surface-image: #202020;
+
+  --background: #000000;
+  --foreground: #f7f2ee;
+
+  --card: #151515;
+  --card-foreground: #f7f2ee;
+
+  --popover: #151515;
+  --popover-foreground: #f7f2ee;
+
+  --primary: #e98668;
+  --primary-foreground: #271915;
+
+  --secondary: #242424;
+  --secondary-foreground: #f7f2ee;
+
+  --muted: #1c1c1c;
+  --muted-foreground: #bfb6b1;
+
+  --accent: #322521;
+  --accent-foreground: #f7f2ee;
+
+  --destructive: #ef7180;
+
+  --border: #383838;
+  --input: #383838;
+  --ring: #e98668;
+
+  --chart-1: #e98668;
+  --chart-2: #e66b82;
+  --chart-3: #cc5fa3;
+  --chart-4: #aa81d2;
+  --chart-5: #62a9e1;
+
+  --sidebar: #101010;
+  --sidebar-foreground: #f7f2ee;
+  --sidebar-primary: #e98668;
+  --sidebar-primary-foreground: #271915;
+  --sidebar-accent: #242424;
+  --sidebar-accent-foreground: #f7f2ee;
+  --sidebar-border: #383838;
+  --sidebar-ring: #e98668;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-image: var(--surface-image);
+  --color-text-muted: var(--muted-foreground);
+  --color-line: var(--border);
+
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Bebas Neue", sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply bg-background font-sans;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    @apply bg-background text-foreground;
+  }
+}
+
+.app-button.ant-btn {
+  text-transform: uppercase;
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .app-button.ant-btn:not(:disabled):not(.ant-btn-loading):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgb(233 134 104 / 25%);
+  }
+}
+
+.app-button.ant-btn:not(:disabled):not(.ant-btn-loading):active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgb(233 134 104 / 15%);
+}
+
+.app-button.ant-btn:disabled,
+.app-button.ant-btn.ant-btn-loading {
+  transform: none;
+}
+
+.mobile-menu-trigger .mobile-menu-icon {
+  color: var(--foreground);
+  transition: color 150ms ease;
+}
+
+.mobile-menu-trigger:hover .mobile-menu-icon,
+.mobile-menu-trigger:focus-visible .mobile-menu-icon {
+  color: var(--primary);
+}
+
+.drawer-close-button .drawer-close-icon {
+  color: var(--muted-foreground);
+  transition: color 150ms ease;
+}
+
+.drawer-close-button.ant-btn:not(:disabled):hover {
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
+.drawer-close-button:hover .drawer-close-icon {
+  color: var(--primary);
+}
+
+.account-dropdown.ant-dropdown-placement-bottomRight .ant-dropdown-menu {
+  margin-top: 8px;
+}
+
+.account-dropdown.ant-dropdown-placement-topRight .ant-dropdown-menu {
+  margin-bottom: 8px;
+}
+
+.account-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item:not(.ant-dropdown-menu-item-danger):hover {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+.account-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-danger:hover {
+  background-color: color-mix(in srgb, var(--destructive) 12%, transparent);
+  color: var(--destructive);
+}
+
+.header-action-trigger .header-action-icon {
+  color: var(--foreground);
+  transition: color 200ms ease;
+}
+
+.header-action-trigger:hover .header-action-icon,
+.header-action-trigger:focus-visible .header-action-icon {
+  color: var(--primary);
+}
+
+.app-button.ant-btn.cart-delete-confirm {
+  background-color: var(--destructive);
+  border-color: var(--destructive);
+  color: #fff;
+}
+
+.app-button.ant-btn.cart-delete-confirm:not(:disabled):hover,
+.app-button.ant-btn.cart-delete-confirm:not(:disabled):focus-visible {
+  background-color: var(--destructive);
+  border-color: var(--destructive);
+  color: #fff;
+  opacity: 1;
+  filter: none;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--destructive) 30%, transparent);
+}
